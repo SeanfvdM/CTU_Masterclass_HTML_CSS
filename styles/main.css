@@ -1,0 +1,126 @@
+/* This selector is the root element */
+:root {
+  /* variable declaration */
+  --background: #fafafa;
+  --on-background: #111;
+  --primary: #1e88e5;
+}
+
+/* Adds a base transition to all the elements */
+* {
+  transition: all 0.8s;
+}
+
+/* Where the theme attributes are applied */
+body {
+  /* How to use a variable */
+  background-color: var(--background);
+  color: var(--on-background);
+  font-family: sans-serif;
+}
+
+/* Light Theme */
+.light {
+  --background: #fafafa;
+  --on-background: #111;
+  /* Uses base accent color */
+}
+
+/* Dark theme */
+.dark {
+  --background: #323232;
+  --on-background: #fff;
+  /* Overrides accent color */
+  --primary: yellow;
+}
+
+/* Adds a border to any bold tags in a paragraph */
+p > b {
+  border-bottom: 2px solid var(--primary);
+  transition: all 0.2s;
+}
+
+/* Hides the border of any bold tags in a paragraph when hovered */
+p > b:hover {
+  border-bottom: 2px solid transparent;
+}
+
+/* Makes all images 100px*100px squares */
+img {
+  aspect-ratio: 1; /*aspect ratio = 1/1 = 1 width / 1 height*/
+  /*aspect-ratio: 2; /*aspect ratio = 2/1 = 2 width / 1 height*/
+  /*aspect-ratio: 0.5; /*aspect ratio = 1/2 = 1 width / 2 height*/
+  height: 100px;
+  transition: all 0.4s;
+}
+
+/* Enlarges image on hover */
+img:hover {
+  height: 150px;
+}
+
+/* Adds a border and plays an animation on click/tap */
+img:active {
+  border-radius: 50%;
+  animation: image-rotate2 2s;
+}
+
+/* A basic clockwise spin animation */
+@keyframes image-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+  from {
+    transform: rotate(0deg);
+  }
+}
+/* A clockwise spin animation which also animates the border radius at certain points */
+@keyframes image-rotate2 {
+  0% {
+    transform: rotate(0deg);
+    border-radius: 0%;
+  }
+  10% {
+    transform: rotate(0deg);
+    border-radius: 50%;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Response accent color change when the view port is less than or equal to 300px */
+@media screen and (max-width: 300px) {
+  :root {
+    --primary: red;
+  }
+}
+
+/* Important styles for a tags */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* A rainbow animation effect */
+@keyframes rainbow {
+  0% {
+    background-color: red;
+  }
+  33% {
+    background-color: green;
+  }
+  66% {
+    background-color: blue;
+  }
+  100% {
+    background-color: red;
+  }
+}
+
+/* Alternates the rainbow effect infinitely */
+#progressBar {
+  animation: rainbow 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}

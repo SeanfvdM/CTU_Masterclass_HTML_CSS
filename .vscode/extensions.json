@@ -1,0 +1,9 @@
+{
+  //Quality of life extentions
+  "recommendations": [
+    "ms-vscode.live-server",
+    "streetsidesoftware.code-spell-checker",
+    "liamhammett.inline-parameters",
+    "usernamehw.errorlens"
+]
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <!-- #region Google Font icons -->
+        <!-- See https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Ahome%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048 -->
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 48
+            }
+
+        </style>
+        <!-- #endregion -->
+
+        <!-- Local css file import -->
+        <link rel="stylesheet" href="/styles/main.css" />
+        <!-- Basic JS for theme toggling -->
+        <script>
+            // JS diff between arrow and named functions
+            // https://medium.com/geekculture/regular-vs-arrow-function-1f8140fbcece
+
+            // Example of a normal/named function
+            function toggleTheme2() {
+                const body = document.getElementsByTagName('body')[0];
+                if (body.classList.contains('light')) {
+                    body.classList.replace('light', 'dark');
+                }
+                else {
+                    body.classList.replace('dark', 'light');
+                }
+            }
+
+            const toggleTheme = () => {
+                // gets the body element from the document
+                const body = document.getElementsByTagName('body')[0];
+                // Check if the light css class is present
+                if (body.classList.contains('light')) {
+                    // replaces the light class with dark
+                    body.classList.replace('light', 'dark');
+                }
+                else {
+                    // replaces the dark class with light
+                    body.classList.replace('dark', 'light');
+                }
+            }
+
+            // Basic progress bar updating
+            const updateProgress = () => {
+                // get the input from an input element
+                const value = document.getElementById('progressBarInput').value;
+                // this is going to be used for output
+                let progress = 0;
+                // check if value is a string since the input is a text input
+                if (typeof value === 'string') {
+                    // try and convert the string to a number
+                    try {
+                        progress = JSON.parse(value);
+                    } catch (error) {
+                        // JSON.parse can throw an exception if a string is being parsed
+                        // The below will throw an exception
+                        /* JSON.parse('apple') */
+                    }
+                    // check if the value is a number incase the input is smart and knows the difference
+                } else if (typeof value === 'number') {
+                    progress = value;
+                }
+                // get the progress bar element
+                const progressBar = document.getElementById('progressBar');
+                // convert the progress to a string with a percent sign
+                progressBar.style.width = `${progress}%`;
+            }
+        </script>
+    </head>
+
+    <body class="light">
+        <h3>Header</h3>
+        <a href="https://www.google.com">Link</a>
+        <button onclick="toggleTheme()">Toggle theme</button>
+        <!-- A paragraph with a nested div containing two images -->
+        <p>
+            this is a paragraph
+        <div>
+            <img
+                src="https://images.unsplash.com/photo-1662485269829-cba34eb47cae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80" />
+            <img height="100"
+                src="https://images.unsplash.com/photo-1662485269829-cba34eb47cae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80" />
+        </div>
+        <!-- Some styled text -->
+        <p>
+            Some more text with <b>bold</b> and <i>italic</i>
+        </p>
+        </p>
+        <!-- #region Progress bar -->
+        <div id="progressBarBorder" style="
+            height: 25px;
+            overflow: hidden; /* use overflow to clip content that is being shown outside of its parent*/
+            width: 200px;
+            border: 1px solid var(--on-background);">
+            <div id="progressBar" style="
+                height: 100%;
+                max-width: 100%; /* max-width does not always work for limiting content */
+                width: 10%;
+                background-color: var(--primary);">
+            </div>
+        </div>
+        <input id="progressBarInput" style="margin-top: 8px;" type="text" value="50" onblur="updateProgress()">
+        <!-- #endregion -->
+
+        <!-- #region emmet example -->
+        <!-- div>div#id>div*2 -->
+        <div>
+            <div id="id">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- #endregion -->
+
+        <!--#region font icon and svg example -->
+        <!-- Font icon see <head> -->
+        <span class="material-symbols-outlined">
+            home
+        </span>
+        <!-- Using svg tags in html -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+            <path
+                d="M8 42V18L24.1 6 40 18v24H28.3V27.75h-8.65V42Zm3-3h5.65V24.75H31.3V39H37V19.5L24.1 9.75 11 19.5Zm13-14.65Z" />
+        </svg>
+        <!-- importing svg files into html -->
+        <img src="/assets/home_FILL0_wght400_GRAD0_opsz48.svg" />
+        <!-- #endregion font icon and svg example  -->
+    </body>
+
+</html>
